@@ -37,6 +37,9 @@ ol, ul {
 blockquote, q {
 	quotes: none;
 }
+.arise{
+	display: none;
+}
 blockquote:before, blockquote:after,
 q:before, q:after {
 	content: '';
@@ -124,6 +127,33 @@ li:hover {
 #portfolio h2 {
 	text-align: center;
 	margin-bottom: 1em;
+}
+.trier{
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	gap: 10px;
+	margin-bottom: 30px;
+}
+.trier button{
+	font-family: Syne;
+	font-size: 16px;
+	font-weight: 700;
+	line-height: 19.2px;
+	text-align: center;
+	height: 37px;
+	gap: 0px;
+	border-radius: 60px;
+	border: 2px solid;
+	opacity: 0px;
+	border-color: #1D6154;
+	background-color: white;
+	color: #1D6154;
+	cursor: pointer;
+}
+.space{
+	padding-left: 20px;
+	padding-right: 20px;
 }
 .gallery {
 	width: 100%;
