@@ -2,6 +2,27 @@
    v2.0 | 20110126
    License: none (public domain)
 */
+button{
+	cursor: pointer;
+}
+.dispair{
+	z-index: 2;
+	opacity: 0;
+}
+.appair{
+	z-index: 4;
+}
+.dispair2{
+	z-index: 1;
+	opacity: 0;
+}
+.appair2{
+	z-index: 5;
+}
+.main-container{
+	z-index: 3;
+	position: absolute;
+}
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -30,6 +51,18 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+}
+main{
+	background-color: white;
+}
+a{
+	text-decoration: none;
+	color: #000000;
+	transition: 0.5s;
+}
+a:hover{
+	color: #B1663C;
+	transition: 0.5s;
 }
 ol, ul {
 	list-style: none;
@@ -120,7 +153,24 @@ li:hover {
 #introduction h2 {
 	margin-bottom: 1em;
 }
-
+.Modifier-position{
+	position: relative;
+}
+.Modifier{
+	position: absolute;
+	left: 60%;
+	top: 20%;
+	color: #000000;
+	border: none;
+	background-color: white;
+	font-family: Work Sans;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 16.42px;
+	text-align: center;
+	font-size: large;
+	cursor: pointer;
+}
 #introduction p {
 	margin-bottom: 0.5em;
 }
@@ -215,4 +265,215 @@ footer nav ul {
 	justify-content: flex-end;
 	margin: 2em
 }
+.modif-section{
+	position: fixed;
+	top: 0%;
+	right: 0%;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: #0000004D;
+}
+.Modif-container{
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 700px;
+	height: 700px;
+	border-radius: 10px;
+	background-color: white;
+}
+.Modif-container h2{
+	position: absolute;
+	top: 5%;
+	width: 173px;
+	height: 30px;
+	color: #000000;
+	font-family: Work Sans;
+	font-size: 26px;
+	font-weight: 400;
+	line-height: 30.5px;
+	text-align: center;
+	margin-top: 40px;
+}
+.cross{
+	position: absolute;
+	top: 7%;
+	right: 10%;
+	font-size: x-large;
+	cursor: pointer;
+}
+.cross2{
+	position: absolute;
+	top: 7%;
+	right: 10%;
+	font-size: x-large;
+	cursor: pointer;
+}
+.Modif-container button{
+	width: 237px;
+	height: 36px;
+	border-radius: 60px;
+	background-color: #1D6154;
+	color: white;
+	position: absolute;
+	bottom: 10%;
+}
+.modifimg{
+	display: flex;
+	flex-direction: row;
+	flex-direction: row;
+	flex-wrap: wrap;
+	padding: 50px;
+	padding-left: 90px;
+	gap: 15px;
+	align-items: center;
 
+}
+.modifimg figure{
+	display: inline;
+	width: 16%;
+	position: relative;
+}
+.modifimg img{
+	width: 100%;
+}
+.modifimg button{
+	position: absolute;
+	width: 17px;
+	height: 17px;
+	border-radius: 2px;
+	color: white;
+	right: 3px;
+	top: 2px;
+	background-color: black;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: x-small;
+	cursor: pointer;
+}
+.ajout-section{
+	position: fixed;
+	top: 0%;
+	right: 0%;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: #0000004D;
+}
+.ajout-container{
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 700px;
+	height: 700px;
+	border-radius: 10px;
+	background-color: white;
+}
+.ajout-container h2{
+	position: absolute;
+	top: 5%;
+	width: 173px;
+	height: 30px;
+	color: #000000;
+	font-family: Work Sans;
+	font-size: 26px;
+	font-weight: 400;
+	line-height: 30.5px;
+	text-align: center;
+	margin-top: 40px;
+}
+.ajout-container button{
+	width: 237px;
+	height: 36px;
+	border-radius: 60px;
+	background-color: #1D6154;
+	color: white;
+	position: absolute;
+	bottom: 10%;
+}
+.ajout{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	padding: 50px;
+	padding-bottom: 0px;
+	gap: 15px;
+	align-items: center;
+}
+.modal-ajout{
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+form label{
+	width: 32px;
+	height: 16px;
+}
+form input{
+	height: 51px;
+	border: none;
+	box-shadow: 0px 4px 14px 0px #00000017;
+
+}
+form select{
+	height: 51px;
+	border: none;
+	box-shadow: 0px 4px 14px 0px #00000017;
+
+}
+
+#file{
+	display: none;
+}
+.file{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	width: 420px;
+	height: 169px;
+	border-radius: 3px;
+	background: #E8F1F6;
+}
+.file p{
+	font-size: x-small;
+}
+.file h3{
+	width: 173px;
+	height: 36px;
+	border-radius: 50px;
+	background: #CBD6DC;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #306685;
+}
+.file i{
+	font-size: xxx-large;
+	color: #B9C5CC;
+	margin-top: 25px;
+}
+/* LOGIN */
+.login {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 80vh;
+}
+  
+.login a {
+	text-decoration: underline;
+	margin-bottom: 100px;
+}
