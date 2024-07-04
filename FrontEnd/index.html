@@ -15,13 +15,22 @@
 </head>
 <body>
 <div class="main-container">
+	<span class="connect-bar delete">
+		<div class="flex-center">
+			<i class="fa-regular fa-pen-to-square"></i>
+			<p>Mode édition</p>
+		</div>
+	</span>
 	<header>
 		<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 		<nav>
 			<ul>
 				<li>projets</li>
 				<li>contact</li>
-				<li><a href="login.html">login</a></li>
+				<li>
+					<a href="login.html" class="Login">login</a>
+					<a href="index.html" class=" delete logout">logout</a>
+				</li>
 				<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 			</ul>
 		</nav>
@@ -41,10 +50,15 @@
 		<section id="portfolio">
 			<div class="Modifier-position">
 				<h2>Mes Projets</h2>
-				<button class="Modifier">Modifier</button>
+				<button class="Modifier delete ">
+					<div class="flex-center">
+						<i class="fa-regular fa-pen-to-square"></i>
+						<p>Modifier</p>
+					</div>
+				</button>
 			</div>
 			<div class="trier">
-				<button class="space" id="trieT">Tous</button>
+				<button class="space trie filterselected" id="trieT">Tous</button>
 			</div>
 			<div class="gallery">
 			</div>
@@ -85,13 +99,17 @@
 <div class="ajout-section dispair2">
 	<div class="ajout-container">
 		<h2>Ajout Photo</h2>
+		<span class="arrowL"><i class="fa-solid fa-left-long"></i></span>
 		<span class="cross2"><i class="fa-solid fa-xmark"></i></span>
 		<div class="ajout">
 			<form action="#" method="post" class="modal-ajout">
 				<label class="file" for="file">
-					<i class="fa-regular fa-image"></i>
-					<h3>+ Ajouter photo</h3>
-					<p>jpg, png : 4mo max</p>
+					<div class="empty">
+						<i class="fa-regular fa-image"></i>
+						<h3>+ Ajouter photo</h3>
+						<p>jpg, png : 4mo max</p>
+					</div>
+					<div id="imagePreview"></div>
 				</label>
 				<input type="file" id="file">
 				<label for="name">Titre</label>

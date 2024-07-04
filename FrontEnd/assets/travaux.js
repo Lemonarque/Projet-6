@@ -4,6 +4,8 @@ fetch("http://localhost:5678/api/works")
 const token = localStorage.getItem("token")
 let bouttonT = document.querySelector("#trieT")
 let modifier = document.querySelector(".Modifier")
+let logout = document.querySelector(".logout")
+let login = document.querySelector(".Login")
 modifier.addEventListener("click",() => {
     let popup1 = document.querySelector(".modif-section")
     popup1.classList.remove("dispair")
@@ -31,6 +33,12 @@ cross2.addEventListener("click", () => {
     popup1.classList.add("dispair")
     popup1.classList.remove("appair")
 })
+let arrow = document.querySelector(".arrowL")
+arrow.addEventListener("click",()=>{
+    let popup2 = document.querySelector(".ajout-section")
+    popup2.classList.add("dispair2")
+    popup2.classList.remove("appair2")
+})
 
 function showprojets(a){
 
@@ -48,7 +56,7 @@ function showprojets(a){
     }
 }
 let i =0
-function showprojet(a){
+function previewprojet(a){
     
     let projet = a
     const section = document.querySelector(".gallery")
@@ -61,7 +69,7 @@ function showprojet(a){
     card.appendChild(pict)
     card.appendChild(ctext)
 }
-function showprojets2(a){
+function showtrash(a){
 
     for(let i =0;i<a.length; i++){
         let projet = a[i]
@@ -78,7 +86,7 @@ function showprojets2(a){
         card.appendChild(del)
     }
 }
-function trieprojets(a){
+function filterProjet(a){
     for(let i =0;i<a.length; i++){
 
         let trie = a[i]
@@ -87,30 +95,46 @@ function trieprojets(a){
         boutton.innerText = trie.name
         if(trie.id == 1){
             boutton.setAttribute("id","trieO")
+            boutton.setAttribute("class","trie")
         }
         if(trie.id == 2){
             boutton.setAttribute("id","trieA")
+            boutton.setAttribute("class","trie")
         }
         if(trie.id == 3){
             boutton.setAttribute("id","trieHR")
+            boutton.setAttribute("class","trie")
         }
         flex.appendChild(boutton)
     }
 
 }
-async function listtriage(){
-    const res = await fetch("http://localhost:5678/api/categories")
-    const triages = await res.json()
-    return triages
+async function getfilter(){
+    try{
+        const res = await fetch("http://localhost:5678/api/categories")
+        const triages = await res.json()
+        return triages
+    }catch{
+        alert("Le server est actuellement en maintenance")
+    }
 }
 async function getprojets(){
-    const res  = await fetch("http://localhost:5678/api/works")
-    const projets = await res.json()
-    console.log(projets.length)
-    return projets
+    try{
+        const res  = await fetch("http://localhost:5678/api/works")
+        const projets = await res.json()
+        console.log(projets.length)
+        return projets
+    }catch{
+        alert("Le serveur est actuellement indisponible")
+    }
 }
 async function delprojets(i){
-    const res  = await fetch("http://localhost:5678/api/works/"+ i,{method:"DELETE",headers: { Authorization: `Bearer ${token}`}})
+    try{
+        const res  = await fetch("http://localhost:5678/api/works/"+ i,{method:"DELETE",headers: { Authorization: `Bearer ${token}`}})
+        showprojets(listprojets)
+    }catch{
+        alert("le serveur est actuellement en maintenance")
+    }
 }
 let listprojets = getprojets()
 console.log(listprojets)
@@ -118,50 +142,69 @@ async function filter(){
     const listprojets = await getprojets()
     showprojets(listprojets)
     bouttonT.addEventListener("click",() =>{
+        const allfilter = document.querySelectorAll(".trie")
+        allfilter.forEach((element)=>{
+            element.classList.remove("filterselected")
+        })
+        bouttonT.classList.add("filterselected")
         const section = document.querySelector(".gallery")
-        section.innerHTML = ""
+        section.innerHTML =""
         console.log(listprojets.length)
         for (let i = 0; i<listprojets.length; i+1){
             console.log(listprojets[i]) 
-            showprojet(listprojets[i])
+            previewprojet(listprojets[i])
             i+=1 
         }
-        console.log(bouttonT.innerText)
     })
-    const listbouton = await listtriage()
-    const bouttonfinal = await trieprojets(listbouton)
+    const listbouton = await getfilter()
+    filterProjet(listbouton)
     let bouttonO = document.querySelector("#trieO")
     bouttonO.addEventListener("click",() =>{
+        const allfilter = document.querySelectorAll(".trie")
+        allfilter.forEach((element)=>{
+            element.classList.remove("filterselected")
+        })
+        bouttonO.classList.add("filterselected")
         const section = document.querySelector(".gallery")
         section.innerHTML = ""
         for (let i = 0; i<listprojets.length; i+1){
             if(bouttonO.innerText == listprojets[i].category.name){
                 console.log(listprojets[i]) 
-            showprojet(listprojets[i])
+            previewprojet(listprojets[i])
             }
             i+=1 
         }
     })
     let bouttonA = document.querySelector("#trieA")
     bouttonA.addEventListener("click",() =>{
+        const allfilter = document.querySelectorAll(".trie")
+        allfilter.forEach((element)=>{
+            element.classList.remove("filterselected")
+        })
+        bouttonA.classList.add("filterselected")
         const section = document.querySelector(".gallery")
         section.innerHTML = ""
         for (let i = 0; i<listprojets.length; i+1){
             if(bouttonA.innerText == listprojets[i].category.name){
                 console.log(listprojets[i]) 
-            showprojet(listprojets[i])
+            previewprojet(listprojets[i])
             }
             i+=1 
         }
     })
     let bouttonHR = document.querySelector("#trieHR")
     bouttonHR.addEventListener("click",() =>{
+        const allfilter = document.querySelectorAll(".trie")
+        allfilter.forEach((element)=>{
+            element.classList.remove("filterselected")
+        })
+        bouttonHR.classList.add("filterselected")
         const section = document.querySelector(".gallery")
         section.innerHTML = ""
         for (let i = 0; i<listprojets.length; i+1){
             if(bouttonHR.innerText == listprojets[i].category.name){
                 console.log(listprojets[i]) 
-            showprojet(listprojets[i])
+                previewprojet(listprojets[i])
             }
             i+=1 
         }
@@ -171,7 +214,7 @@ filter()
 
 async function showmodal(){
     const listprojets = await getprojets()
-    showprojets2(listprojets)
+    showtrash(listprojets)
     for(let i = 0; i<listprojets.length;i+=1){
         console.log(i)
         let deltouchs = document.getElementById("del"+i)
@@ -180,6 +223,7 @@ async function showmodal(){
         console.log(poc)
         deltouchs.addEventListener("click",() => {delprojets(poc.id)})
     }
+    showprojets(listprojets)
 }
 showmodal()
 async function addWork(event) {
@@ -188,7 +232,9 @@ async function addWork(event) {
     const title = document.querySelector("#text").value;
     const categoryId = document.querySelector("#list").value;
     const image = document.querySelector("#file").files[0];
-
+    let full = document.querySelector(".emptyimg")
+    let empty = document.querySelector(".empty")
+    
 
     if (title === "" || categoryId === "" || image === undefined) {
         alert("Merci de remplir tous les champs");
@@ -213,6 +259,43 @@ async function addWork(event) {
             body: formsend,
         });
     }
+    showprojets(listprojets)
+    let popup2 = document.querySelector(".ajout-section")
+    popup2.classList.add("dispair2")
+    popup2.classList.remove("appair2")
+    showmodal()
 }
 const btnAjouterProjet = document.querySelector(".send");
 btnAjouterProjet.addEventListener("click", addWork);
+
+logout.addEventListener("click",()=>{
+    localStorage.clear()
+    console.log(localStorage)
+})
+
+function connect(){
+    if (localStorage.getItem("token")){
+        const logoutbar=document.querySelector(".connect-bar")
+        logout.classList.remove("delete")
+        logoutbar.classList.remove("delete")
+        modifier.classList.remove("delete")
+        login.classList.add("delete")
+    }
+}
+connect()
+console.log(localStorage)
+
+const fileInput = document.getElementById('file');
+const imagePreview = document.getElementById('imagePreview');
+
+fileInput.addEventListener('change', (event) => {
+  const file = event.target.files[0];
+  const reader = new FileReader();
+  reader.onload = (event) => {
+    const imageData = event.target.result;
+    imagePreview.innerHTML = `<img src="${imageData}" alt="Preview" style="width: 40%; height: 100%; object-fit: contain;" />`;
+  };
+  reader.readAsDataURL(file);
+  let empty = document.querySelector(".empty")
+  empty.style.display = "none"
+});

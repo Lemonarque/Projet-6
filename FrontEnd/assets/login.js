@@ -49,7 +49,7 @@ function login(id) {
     fetch('http://localhost:5678/api/users/login', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json;charset=utf-8'
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify(id)
     })

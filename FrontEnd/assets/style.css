@@ -22,6 +22,27 @@ button{
 .main-container{
 	z-index: 3;
 	position: absolute;
+	display: flex;
+	flex-direction: column;
+	padding: 0px 50px;
+}
+.delete{
+	display: none;
+}
+.flex-center{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	gap: 10px;
+}
+.filterselected{
+	background-color: #1D6154 !important;
+	color: white !important;
+}
+.send{
+
 }
 
 html, body, div, span, applet, object, iframe,
@@ -54,6 +75,7 @@ body {
 }
 main{
 	background-color: white;
+	padding: 0px 100px 0px 100px;
 }
 a{
 	text-decoration: none;
@@ -84,7 +106,6 @@ table {
 }
 /** end reset css**/
 body {
-	max-width: 1140px;
 	margin:auto;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
@@ -134,12 +155,22 @@ nav li {
 li:hover {
 	color: #B1663C;
 }
+.connect-bar{
+	width: 100%;
+	background-color: #000000;
+	align-items: center;
+	color: white;
+	height: 59px;
+	font-size: x-large;
+}
 #introduction {
 	display: flex;
 	align-items: center;
 }
 #introduction figure {
-	flex: 1
+	flex: 1;
+	width: 314px;
+	height: 472px;
 }
 #introduction img {
 	display: block;
@@ -250,14 +281,13 @@ margin: auto;
 }
 
 input[type="submit"]{
-	font-family: 'Syne';
-	font-weight: 700;
-	color: white;
+	width: 237px;
+	height: 36px;
+	border-radius: 60px;
 	background-color: #1D6154;
+	color: white;
+	bottom: 10%;
 	margin : 2em auto ;
-	width: 180px;
-	text-align: center;
-	border-radius: 60px ;
 }
 
 footer nav ul {
@@ -311,6 +341,13 @@ footer nav ul {
 	position: absolute;
 	top: 7%;
 	right: 10%;
+	font-size: x-large;
+	cursor: pointer;
+}
+.arrowL{
+	position: absolute;
+	top: 7%;
+	left: 10%;
 	font-size: x-large;
 	cursor: pointer;
 }
@@ -416,7 +453,6 @@ footer nav ul {
 	gap: 20px;
 }
 form label{
-	width: 32px;
 	height: 16px;
 }
 form input{
@@ -445,6 +481,27 @@ form select{
 	height: 169px;
 	border-radius: 3px;
 	background: #E8F1F6;
+}
+.empty{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	width: 420px;
+	height: 169px;
+	border-radius: 3px;
+	background: #E8F1F6;
+}
+#imagePreview{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	width: 420px;
+	height: 169px;
+	border-radius: 3px;
 }
 .file p{
 	font-size: x-small;
@@ -476,4 +533,11 @@ form select{
 .login a {
 	text-decoration: underline;
 	margin-bottom: 100px;
+}
+.login__form{
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+	width: 379px;
+	margin-top: 30px;
 }
