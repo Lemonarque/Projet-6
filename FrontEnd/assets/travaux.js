@@ -41,10 +41,11 @@ arrow.addEventListener("click",()=>{
 })
 
 function showprojets(a){
-
+    const section = document.querySelector(".gallery")
+    section.innerHTML = ""
     for(let i =0;i<a.length; i++){
         let projet = a[i]
-        const section = document.querySelector(".gallery")
+        
         let card = document.createElement("figure")
         let pict = document.createElement("img")
         pict.src = projet.imageUrl
@@ -70,10 +71,11 @@ function previewprojet(a){
     card.appendChild(ctext)
 }
 function showtrash(a){
-
+    const section = document.querySelector(".modifimg")
+    section.innerHTML = ""
     for(let i =0;i<a.length; i++){
         let projet = a[i]
-        const section = document.querySelector(".modifimg")
+        
         let card = document.createElement("figure")
         let pict = document.createElement("img")
         let del = document.createElement("button")
@@ -131,7 +133,6 @@ async function getprojets(){
 async function delprojets(i){
     try{
         const res  = await fetch("http://localhost:5678/api/works/"+ i,{method:"DELETE",headers: { Authorization: `Bearer ${token}`}})
-        showprojets(listprojets)
     }catch{
         alert("le serveur est actuellement en maintenance")
     }
@@ -221,7 +222,14 @@ async function showmodal(){
         console.log(deltouchs)
         let poc = document.getElementById(listprojets[i].id)
         console.log(poc)
-        deltouchs.addEventListener("click",() => {delprojets(poc.id)})
+        deltouchs.addEventListener("click",() => {
+            delprojets(poc.id) 
+            showprojets(listprojets)
+            let popup2 = document.querySelector(".ajout-section")
+            popup2.classList.add("dispair2")
+            popup2.classList.remove("appair2")
+            showmodal()
+        })
     }
     showprojets(listprojets)
 }
@@ -276,10 +284,12 @@ logout.addEventListener("click",()=>{
 function connect(){
     if (localStorage.getItem("token")){
         const logoutbar=document.querySelector(".connect-bar")
+        const filt = document.querySelector(".trier")
         logout.classList.remove("delete")
         logoutbar.classList.remove("delete")
         modifier.classList.remove("delete")
         login.classList.add("delete")
+        filt.classList.add("delete")
     }
 }
 connect()

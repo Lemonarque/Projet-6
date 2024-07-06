@@ -27,7 +27,7 @@ button{
 	padding: 0px 50px;
 }
 .delete{
-	display: none;
+	display: none !important;
 }
 .flex-center{
 	display: flex;
